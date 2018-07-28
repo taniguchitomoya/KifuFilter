@@ -36,17 +36,11 @@ namespace KifuFilter
                 int streamCount = (maxPly + splitWidth - 1) / splitWidth;
 
                 FileStream[] stream = new FileStream[streamCount];
-
-                long fileSize = fs.Length; // ファイルのサイズ(byte)
-
                 byte[] buf = new byte[bytesPerPosition]; // データ格納用配列
-
-                int readSize; // Readメソッドで読み込んだバイト数
-                long remain = fileSize; // 読み込むべき残りのバイト数
 
                 while(true)
                 {
-                    readSize = fs.Read(buf, 0, bytesPerPosition);
+                    int readSize = fs.Read(buf, 0, bytesPerPosition);
 
                     if (readSize != bytesPerPosition)
                     {
