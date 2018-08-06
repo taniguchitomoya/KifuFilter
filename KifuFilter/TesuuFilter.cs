@@ -7,7 +7,7 @@ using System.IO;
 
 namespace KifuFilter
 {
-    class TesuuFilter
+    class TesuuSplitter
     {
 
         /// <summary>
@@ -59,6 +59,8 @@ namespace KifuFilter
                     if (stream[streamNumber] == null) {
 
                         string filename = string.Format("{0}_{1}to{2}", outputFileName, streamNumber * splitWidth + 1, streamNumber * splitWidth + splitWidth);
+                        if (splitWidth == 1)
+                            filename = string.Format("{0}_{1}", outputFileName, gamePly);
 
                         //書き込み先のファイルがまだ開かれていないなら開く
                         stream[streamNumber] = new FileStream(filename, FileMode.CreateNew, FileAccess.Write);
@@ -76,6 +78,7 @@ namespace KifuFilter
                     outputStream.Dispose();
                 }
             }
+
 
 
 

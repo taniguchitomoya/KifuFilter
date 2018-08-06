@@ -29,6 +29,15 @@ namespace KifuFilter
         }
     }
 
+    public static class PackedSfenValueUtility
+    {
+        private const int gamePlyOffset = 32 + 2 + 2;
+
+        public static int gamePly(this byte[] bytes) {
+            return BitConverter.ToInt16(bytes,gamePlyOffset);
+        }
+    }
+
     /* original
 	struct PackedSfenValue
 	{
