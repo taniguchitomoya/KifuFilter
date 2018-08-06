@@ -17,8 +17,6 @@ namespace KifuFilter
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            //今は一種類しかないので特に指定しなくてもそれとして扱うが、そのうちargs[2]あたりでどの処理をするか指定するようになる予定
-
             if (args.Length < 2)
             {
                 Console.WriteLine("引数が足りません。");
@@ -29,7 +27,7 @@ namespace KifuFilter
                 Console.WriteLine("KifuFilter TesuuFilterDirectory input_directory_name output_file_name minPly maxPly");
                 Console.WriteLine(" 与えられたディレクトリのすべてのファイルから手数が特定の範囲のもののみ抽出します");
             }
-            else if(args[0] == "SplitByTesuu")
+            else if (args[0] == "SplitByTesuu")
             {
                 int splitWidth = 10;
                 int maxPly = 200;
@@ -53,9 +51,9 @@ namespace KifuFilter
                 }
 
 
-                TesuuSplitter.filter(args[1], args[2],splitWidth,maxPly);
+                TesuuSplitter.filter(args[1], args[2], splitWidth, maxPly);
             }
-            else if(args[0] == "TesuuFilterDirecotry")
+            else if (args[0] == "TesuuFilterDirecotry")
             {
                 if (args.Length < 5)
                 {

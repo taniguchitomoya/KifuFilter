@@ -33,8 +33,9 @@ namespace KifuFilter
     {
         private const int gamePlyOffset = 32 + 2 + 2;
 
-        public static int gamePly(this byte[] bytes) {
-            return BitConverter.ToInt16(bytes,gamePlyOffset);
+        public static int gamePly(this byte[] bytes)
+        {
+            return BitConverter.ToInt16(bytes, gamePlyOffset);
         }
     }
 

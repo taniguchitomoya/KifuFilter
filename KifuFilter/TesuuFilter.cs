@@ -28,7 +28,7 @@ namespace KifuFilter
         /// <param name="outputFileName">出力ファイル名のうち先頭部分（手数）を除くもの</param>
         /// <param name="splitWidth">何手ごとに分割するか。10なら初手から10手まで、11手から20手までのように分割される</param>
         /// <param name="maxPly">最大何手まで取得するか。この数がsplitWidthの倍数でない場合はsplitWidthの倍数になるように切り上げたのと同じ処理になる。</param>
-        public static void filter(string inputFileName,string outputFileName,int splitWidth,int maxPly)
+        public static void filter(string inputFileName, string outputFileName, int splitWidth, int maxPly)
         {
             using (FileStream fs = new FileStream(inputFileName, FileMode.Open, FileAccess.Read))
             {
@@ -38,7 +38,7 @@ namespace KifuFilter
                 FileStream[] stream = new FileStream[streamCount];
                 byte[] buf = new byte[bytesPerPosition]; // データ格納用配列
 
-                while(true)
+                while (true)
                 {
                     int readSize = fs.Read(buf, 0, bytesPerPosition);
 
@@ -56,7 +56,8 @@ namespace KifuFilter
                         continue;
 
 
-                    if (stream[streamNumber] == null) {
+                    if (stream[streamNumber] == null)
+                    {
 
                         string filename = string.Format("{0}_{1}to{2}", outputFileName, streamNumber * splitWidth + 1, streamNumber * splitWidth + splitWidth);
                         if (splitWidth == 1)

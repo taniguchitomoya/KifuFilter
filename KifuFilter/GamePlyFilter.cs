@@ -38,7 +38,8 @@ namespace KifuFilter
             }
 
             //新しいファイルを作成する
-            using (new FileStream(outputFileName,FileMode.Create,FileAccess.Write)) {
+            using (new FileStream(outputFileName, FileMode.Create, FileAccess.Write))
+            {
             }
 
             foreach (string file in Directory.GetFiles(inputDirectoryName))
@@ -55,7 +56,7 @@ namespace KifuFilter
         /// <param name="outputFileName">出力ファイル名のうち先頭部分（手数）を除くもの</param>
         /// <param name="minPly">何手から取得するか</param>
         /// <param name="maxPly">何手まで取得するか</param>
-        public static void filter(string inputFileName,string outputFileName,int minPly,int maxPly)
+        public static void filter(string inputFileName, string outputFileName, int minPly, int maxPly)
         {
             using (FileStream fs = new FileStream(inputFileName, FileMode.Open, FileAccess.Read))
             {
