@@ -20,12 +20,18 @@ namespace KifuFilter
             if (args.Length < 2)
             {
                 Console.WriteLine("引数が足りません。");
+                Console.WriteLine();
                 Console.WriteLine("KifuFilter SplitByTesuu input_filename output_filename [split_width] [maxPly]");
                 Console.WriteLine(" 与えられたファイルを手数で分割します");
+                Console.WriteLine();
                 Console.WriteLine("KifuFilter TesuuFilter input_file_name output_file_name minPly maxPly");
                 Console.WriteLine(" 与えられたファイルから手数が特定の範囲のもののみ抽出します");
+                Console.WriteLine();
                 Console.WriteLine("KifuFilter TesuuFilterDirectory input_directory_name output_file_name minPly maxPly");
                 Console.WriteLine(" 与えられたディレクトリのすべてのファイルから手数が特定の範囲のもののみ抽出します");
+                Console.WriteLine();
+                Console.WriteLine("KifuFilter PrintTesuu input_file_name");
+                Console.WriteLine(" 与えられたファイルのすべての局面の手数を標準出力に出力します。");
             }
             else if (args[0] == "SplitByTesuu")
             {
@@ -75,7 +81,19 @@ namespace KifuFilter
                     GamePlyFIlter.filter(args[1], args[2], int.Parse(args[3]), int.Parse(args[4]));
                 }
             }
+            else if (args[0] == "PrintTesuu")
+            {
+                if (args.Length < 2)
+                {
+                    Console.WriteLine("引数が足りません。");
+                }
+                else
+                {
+                    PrintTesuu.Print(args[1]);
+                }
+            }
 
         }
     }
+
 }
