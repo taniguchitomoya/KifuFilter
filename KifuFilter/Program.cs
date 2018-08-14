@@ -30,8 +30,8 @@ namespace KifuFilter
                 Console.WriteLine("KifuFilter TesuuFilterDirectory input_directory_name output_file_name minPly maxPly");
                 Console.WriteLine(" 与えられたディレクトリのすべてのファイルから手数が特定の範囲のもののみ抽出します");
                 Console.WriteLine();
-                Console.WriteLine("KifuFilter PrintTesuu input_file_name");
-                Console.WriteLine(" 与えられたファイルのすべての局面の手数を標準出力に出力します。");
+                Console.WriteLine("KifuFilter PrintValues input_file_name [count]");
+                Console.WriteLine(" 与えられたファイルの局面の手数,手番からみた評価値,手番からみた対戦結果を標準出力に出力します。");
             }
             else if (args[0] == "SplitByTesuu")
             {
@@ -81,15 +81,19 @@ namespace KifuFilter
                     GamePlyFIlter.filter(args[1], args[2], int.Parse(args[3]), int.Parse(args[4]));
                 }
             }
-            else if (args[0] == "PrintTesuu")
+            else if (args[0] == "PrintValues")
             {
                 if (args.Length < 2)
                 {
                     Console.WriteLine("引数が足りません。");
                 }
+                else if (args.Length == 2)
+                {
+                    PrintValues.Print(args[1], long.MaxValue);
+                }
                 else
                 {
-                    PrintTesuu.Print(args[1]);
+                    PrintValues.Print(args[1], long.Parse(args[2]));
                 }
             }
 
