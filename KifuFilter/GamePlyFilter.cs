@@ -60,7 +60,7 @@ namespace KifuFilter
         {
             using (FileStream fs = new FileStream(inputFileName, FileMode.Open, FileAccess.Read))
             {
-                using (FileStream outputStream = new FileStream(outputFileName, FileMode.OpenOrCreate, FileAccess.Write))
+                using (FileStream outputStream = new FileStream(outputFileName, FileMode.Append, FileAccess.Write))
                 {
                     byte[] buf = new byte[bytesPerPosition]; // データ格納用配列
 
