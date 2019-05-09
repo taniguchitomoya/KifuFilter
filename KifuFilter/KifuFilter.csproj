@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SuishouFilter.cs" />
     <Compile Include="PrintValues.cs" />
     <Compile Include="PackedSfenValue.cs" />
     <Compile Include="Program.cs" />

@@ -7,7 +7,7 @@ using System.IO;
 
 namespace KifuFilter
 {
-    class GamePlyFIlter
+    class GamePlyFilter
     {
         /// <summary>
         /// やねうら王形式の学習用棋譜バイナリの1局面当たりのバイト数

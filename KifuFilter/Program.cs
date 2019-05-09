@@ -12,7 +12,7 @@ namespace KifuFilter
         /// <summary>
         /// やねうら王形式の学習用棋譜ファイルに対するフィルタ処理を行うプログラムです
         /// 
-        /// 開発者用の簡易なツールなので異常系の処理はほとんど行いません。
+        /// 開発者向けの簡易なツールなので異常系の処理はほとんど行いませんし、コードは構造化せずにコピペ中心で作られています。
         /// </summary>
         /// <param name="args"></param>
         static void Main(string[] args)
@@ -32,6 +32,13 @@ namespace KifuFilter
                 Console.WriteLine();
                 Console.WriteLine("KifuFilter PrintValues input_file_name [count]");
                 Console.WriteLine(" 与えられたファイルの局面の手数,手番からみた評価値,手番からみた対戦結果を標準出力に出力します。");
+                Console.WriteLine();
+                Console.WriteLine("KifuFilter SuishouFilter1 input_file_name [output_file_name]");
+                Console.WriteLine(" 与えられたファイルのすべての局面について前後の局面を考慮して不適切と思われる場合に評価値を補正します。");
+                Console.WriteLine(" 入力ファイルと出力ファイルは同じ大きさになります。");
+                Console.WriteLine();
+                Console.WriteLine("KifuFilter SuishouFilter2 input_file_name [output_file_name]");
+                Console.WriteLine(" 与えられたファイルから評価値と結果の符号が一致するもののみ抽出します");
             }
             else if (args[0] == "SplitByTesuu")
             {
@@ -67,7 +74,7 @@ namespace KifuFilter
                 }
                 else
                 {
-                    GamePlyFIlter.filterDir(args[1], args[2], int.Parse(args[3]), int.Parse(args[4]));
+                    GamePlyFilter.filterDir(args[1], args[2], int.Parse(args[3]), int.Parse(args[4]));
                 }
             }
             else if (args[0] == "TesuuFilter")
@@ -78,7 +85,7 @@ namespace KifuFilter
                 }
                 else
                 {
-                    GamePlyFIlter.filter(args[1], args[2], int.Parse(args[3]), int.Parse(args[4]));
+                    GamePlyFilter.filter(args[1], args[2], int.Parse(args[3]), int.Parse(args[4]));
                 }
             }
             else if (args[0] == "PrintValues")
@@ -94,6 +101,36 @@ namespace KifuFilter
                 else
                 {
                     PrintValues.Print(args[1], long.Parse(args[2]));
+                }
+            }
+            else if (args[0] == "SuishouFilter1")
+            {
+                if (args.Length == 3)
+                {
+                    SuishouFilter.filter1(args[1], args[2]);
+                }
+                else if (args.Length == 2)
+                {
+                    SuishouFilter.filter1(args[1], args[1] + ".suishou1");
+                }
+                else if (args.Length < 2)
+                {
+                    Console.WriteLine("引数が足りません。");
+                }
+            }
+            else if (args[0] == "SuishouFilter2")
+            {
+                if (args.Length == 3)
+                {
+                    SuishouFilter.filter2(args[1], args[2]);
+                }
+                else if (args.Length == 2)
+                {
+                    SuishouFilter.filter2(args[1], args[1] + ".suishou2");
+                }
+                else if (args.Length < 2)
+                {
+                    Console.WriteLine("引数が足りません。");
                 }
             }
 
